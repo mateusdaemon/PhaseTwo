@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 10;
-    
-    private FloatingJoystick joystick;
-    private Rigidbody2D rb;
-
+    private PlayerMove playerMove;
+    private PlayerInput playerInput;
+    private PlayerRender PlayerRender;
+    private PlayerAnim playerAnim;
 
     // Start is called before the first frame update
     void Start()
     {
-        joystick = FindObjectOfType<FloatingJoystick>();
-        rb = GetComponent<Rigidbody2D>();
+        playerMove = GetComponent<PlayerMove>();
+        playerInput = GetComponent<PlayerInput>();
+        PlayerRender = GetComponent<PlayerRender>();
+        playerAnim = GetComponent<PlayerAnim>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = joystick.Direction * speed;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer(playerInput.MovementInputDirection);
+    }
+
+    private void MovePlayer(Vector2 direction)
+    {
+        playerMove.Move(direction);
+        playerAnim.SetAnim(direction);
+        PlayerRender.Render(direction);
     }
 }
