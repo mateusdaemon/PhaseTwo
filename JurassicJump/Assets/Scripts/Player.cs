@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private FloatingJoystick joystick;
     private Rigidbody2D rb;
 
+
     // Start is called before the first frame update
     void Start()
     {
