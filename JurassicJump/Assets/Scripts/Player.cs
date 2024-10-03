@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(joystick.Direction);
         rb.velocity = joystick.Direction * speed;
     }
 }
