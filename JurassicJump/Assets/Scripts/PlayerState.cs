@@ -1,32 +1,54 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public enum State
 {
     Walk,
     Jump,
-    Idle
+    Idle,
+    None
 }
 
 
 public class PlayerState : MonoBehaviour
 {
-    public State State {  get; private set; }
+    public State State { get; private set; }
 
-    public void ChangeState(State state)
+    // Usa Action para definir um evento de mudança de estado
+    public event Action<State> OnStateChange;
+
+    private void Start()
     {
-        switch (state)
+        State = State.None;
+    }
+
+    public void ChangeState(State newState)
+    {
+        switch (newState)
         {
-            case State.Walk:
-                State = State.Walk;
-                break;
             case State.Jump:
                 State = State.Jump;
                 break;
+            case State.Walk:
+                if (State != State.Jump)
+                {
+                    State = State.Walk;
+                }
+                break;
             case State.Idle:
-                State = State.Idle;
+                if (State != State.Jump)
+                {
+                    State = State.Idle;
+                }
+                break;
+            case State.None:
+                State = newState;
                 break;
         }
+
+        OnStateChange.Invoke(State);
     }
 }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerRender PlayerRender;
     private PlayerAnim playerAnim;
+    private PlayerJump playerJump;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         PlayerRender = GetComponent<PlayerRender>();
         playerAnim = GetComponent<PlayerAnim>();
+        playerJump = GetComponent<PlayerJump>();
+        playerInput.OnJump += playerJump.Jump;
     }
 
     // Update is called once per frame
@@ -26,13 +29,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer(playerInput.MovementInputDirection);
-    }
-
-    private void MovePlayer(Vector2 direction)
-    {
-        playerMove.Move(direction);
-        playerAnim.SetAnim(direction);
-        PlayerRender.Render(direction);
+        playerMove.Move(playerInput.MovementInputDirection);
+        PlayerRender.Render(playerInput.MovementInputDirection);
     }
 }

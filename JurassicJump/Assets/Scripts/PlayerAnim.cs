@@ -11,24 +11,30 @@ public class PlayerAnim : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerState = GetComponent<PlayerState>();
+
+        playerState.OnStateChange += SetAnim;
     }
 
-    public void SetAnim(Vector2 direction)
+    public void SetAnim(State state)
     {
-        animator.SetBool("walk", false);
-        animator.SetBool("jump", false);
-        animator.SetBool("idle", false);
-
-        switch (playerState.State)
+        switch (state)
         {
             case State.Walk:
                 animator.SetBool("walk", true);
+                animator.SetBool("idle", false);
+                animator.SetBool("jump", false);
                 break;
             case State.Jump:
                 animator.SetBool("jump", true);
+                animator.SetBool("walk", false);
+                animator.SetBool("idle", false);
                 break;
             case State.Idle:
                 animator.SetBool("idle", true);
+                animator.SetBool("walk", false);
+                animator.SetBool("jump", false);
+                break;
+            case State.None:
                 break;
         }
     }
