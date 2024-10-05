@@ -26,7 +26,16 @@ public class PlayerInput : MonoBehaviour
 
     private void GetMoveInput()
     {
-        MovementInputDirection = joystick.Direction;
+        Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), 0);
+
+        if (joystick.Direction.x != 0)
+        {
+            MovementInputDirection = joystick.Direction;
+        } else if (direction.x != 0)
+        {            
+            MovementInputDirection = direction;
+        }
+
         MovementInputDirection.Normalize();
     }
 
