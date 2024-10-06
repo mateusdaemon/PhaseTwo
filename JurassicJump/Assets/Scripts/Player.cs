@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     private PlayerMove playerMove;
     private PlayerInput playerInput;
     private PlayerRender PlayerRender;
-    private PlayerAnim playerAnim;
     private PlayerJump playerJump;
 
     // Start is called before the first frame update
@@ -16,7 +15,6 @@ public class Player : MonoBehaviour
         playerMove = GetComponent<PlayerMove>();
         playerInput = GetComponent<PlayerInput>();
         PlayerRender = GetComponent<PlayerRender>();
-        playerAnim = GetComponent<PlayerAnim>();
         playerJump = GetComponent<PlayerJump>();
         playerInput.OnJump += playerJump.Jump;
     }

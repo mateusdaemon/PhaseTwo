@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour
@@ -26,14 +28,14 @@ public class PlayerInput : MonoBehaviour
 
     private void GetMoveInput()
     {
-        Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), 0);
-
-        if (joystick.Direction.x != 0)
+        if (joystick != null && Mathf.Abs(joystick.Direction.x) > 0.1f)
         {
-            MovementInputDirection = joystick.Direction;
-        } else if (direction.x != 0)
-        {            
-            MovementInputDirection = direction;
+            MovementInputDirection = new Vector2(joystick.Direction.x, 0);
+        } 
+        else
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            MovementInputDirection = new Vector2(horizontalInput, 0);
         }
 
         MovementInputDirection.Normalize();

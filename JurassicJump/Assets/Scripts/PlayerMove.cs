@@ -17,7 +17,6 @@ public class PlayerMove : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
 
         if (Mathf.Abs(direction.x) != 0)
         {
@@ -26,5 +25,7 @@ public class PlayerMove : MonoBehaviour
         {
             playerState.ChangeState(State.Idle);
         }
+
+        rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
     }
 }
