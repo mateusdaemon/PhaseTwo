@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6519748284902636502}
   - component: {fileID: 672343908045465306}
   - component: {fileID: 815707318368405411}
+  - component: {fileID: 2384613067776271220}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,3 +58,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e14d05e83d11242a358548a8d2284b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2384613067776271220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748875716901712056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9bb2d1b91127934ba266f4574df86c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidGameId: 5709211
+  testMode: 1
