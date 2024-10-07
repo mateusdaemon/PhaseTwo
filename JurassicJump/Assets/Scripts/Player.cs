@@ -19,12 +19,6 @@ public class Player : MonoBehaviour
         playerInput.OnJump += playerJump.Jump;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         playerMove.Move(playerInput.MovementInputDirection);
