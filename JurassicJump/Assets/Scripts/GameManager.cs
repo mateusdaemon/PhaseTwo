@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour, IDamageable
     private PlayerUI playerUI;
     private int maxLives = 3;
     private int live = 3;
+    private int points = 0;
 
     private bool isPlaying = false;
     private float playTime = 0;
@@ -73,6 +74,8 @@ public class GameManager : MonoBehaviour, IDamageable
         live = maxLives;
         hudManager.GainLife(live);
         playTime = 0;
+        points = 0;
+        hudManager.SetPoints(points);
         isPlaying = true;
         LoadLevel("Level1");
     }
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour, IDamageable
     {
         isPlaying = false;
         hudManager.SetEndGameTime(playTime);
+        hudManager.SetEndPoints(points);
 
         if (live > 0)
         {
@@ -115,5 +119,11 @@ public class GameManager : MonoBehaviour, IDamageable
             hudManager.PlayerLost();
         }
         hudManager.SetMenu(Menu.Result);
+    }
+
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        hudManager.SetPoints(points);
     }
 }

@@ -25,6 +25,7 @@ public class HudManager : MonoBehaviour
     public Button JumpBtn;
     public Image[] lives;
     public TextMeshProUGUI gameTime;
+    public TextMeshProUGUI points;
 
     [Header("Main Menu Components")]
     public Button playBtn;
@@ -34,6 +35,7 @@ public class HudManager : MonoBehaviour
     public Image winImage;
     public Image loseImage;
     public TextMeshProUGUI endTime;
+    public TextMeshProUGUI endPoints;
 
     private void Awake()
     {
@@ -124,5 +126,15 @@ public class HudManager : MonoBehaviour
     public void SetEndGameTime(float elapsed)
     {
         endTime.text = elapsed.ToString("F2");
+    }
+
+    public void SetPoints(int amount)
+    {
+        points.text = amount.ToString();
+    }
+
+    public void SetEndPoints(int amount)
+    {
+        endPoints.text = amount.ToString();
     }
 }
