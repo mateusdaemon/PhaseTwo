@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class DamagePlayer : MonoBehaviour
 {
-    private GameManager gameManager;
+    private IDamageable damageable;
 
-    // Start is called before the first frame update
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        damageable = FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && damageable != null)
         {
-            gameManager.DamagePlayer();
+            damageable.TakeDamage(1);
         }
     }
 }

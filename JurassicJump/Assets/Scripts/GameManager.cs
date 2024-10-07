@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDamageable
 {
     private static GameManager Instance;
     private HudManager hudManager;
@@ -56,12 +56,15 @@ public class GameManager : MonoBehaviour
         if (levelName == "Menu")
         {
             hudManager.SetMenu(Menu.Main);
+            LoadScene("Menu");
         } else if (levelName == "Result")
         {
             ResultScreenLoad();
+            LoadScene("Result");
         } else
         {
             hudManager.SetMenu(Menu.Gameplay);
+            LoadScene("Level1");
         }
     }
 
@@ -72,16 +75,14 @@ public class GameManager : MonoBehaviour
         playTime = 0;
         isPlaying = true;
         LoadLevel("Level1");
-        LoadScene("Level1");
     }
 
     private void HandleReturn()
     {
-        LoadLevel("Menu");
-        LoadScene("Menu");
+        LoadLevel("Menu");        
     }
 
-    public void DamagePlayer()
+    public void TakeDamage(int damage)
     {
         live -= 1;
         hudManager.DropLife();
@@ -89,7 +90,6 @@ public class GameManager : MonoBehaviour
         if (live <= 0)
         {
             LoadLevel("Result");
-            LoadScene("Result");
         } else
         {
             LoadScene("Level1");
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         LoadLevel("Result");
-        LoadScene("Result");
     }
 
     private void ResultScreenLoad()
