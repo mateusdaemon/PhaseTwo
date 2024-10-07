@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +32,7 @@ public class GameManager : MonoBehaviour
 
         playerUI.OnPlayBtn += HandlePlay;
         playerUI.OnReturnBtn += HandleReturn;
+
         LoadLevel(SceneManager.GetActiveScene().name);
     }
 
@@ -60,17 +58,7 @@ public class GameManager : MonoBehaviour
             hudManager.SetMenu(Menu.Main);
         } else if (levelName == "Result")
         {
-            isPlaying = false;
-            hudManager.SetEndGameTime(playTime);
-
-            if (live > 0)
-            {
-                hudManager.PlayerWin();
-            } else
-            {
-                hudManager.PlayerLost();
-            }
-            hudManager.SetMenu(Menu.Result);
+            ResultScreenLoad();
         } else
         {
             hudManager.SetMenu(Menu.Gameplay);
@@ -112,5 +100,21 @@ public class GameManager : MonoBehaviour
     {
         LoadLevel("Result");
         LoadScene("Result");
+    }
+
+    private void ResultScreenLoad()
+    {
+        isPlaying = false;
+        hudManager.SetEndGameTime(playTime);
+
+        if (live > 0)
+        {
+            hudManager.PlayerWin();
+        }
+        else
+        {
+            hudManager.PlayerLost();
+        }
+        hudManager.SetMenu(Menu.Result);
     }
 }

@@ -17,8 +17,8 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         hudManager = FindObjectOfType<HudManager>();
-        joystick = FindObjectOfType<FloatingJoystick>();
         hudManager.JumpBtn.onClick.AddListener(HandleJump);
+        joystick = FindObjectOfType<FloatingJoystick>();
     }
 
     void Update()

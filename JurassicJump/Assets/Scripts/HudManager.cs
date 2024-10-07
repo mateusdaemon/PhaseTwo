@@ -14,7 +14,7 @@ public enum Menu
 
 public class HudManager : MonoBehaviour
 {
-    private static HudManager Instance;
+    public static HudManager Instance;
 
     [Header("Menus")]
     public GameObject mainMenu;
@@ -34,7 +34,6 @@ public class HudManager : MonoBehaviour
     public Image winImage;
     public Image loseImage;
     public TextMeshProUGUI endTime;
-
 
     private void Awake()
     {
