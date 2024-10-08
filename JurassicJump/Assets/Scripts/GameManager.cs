@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         live -= 1;
+        points = 0;
+        hudManager.SetPoints(points);
         hudManager.DropLife();
 
         if (live <= 0)
