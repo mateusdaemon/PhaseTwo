@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinCollect : MonoBehaviour
+public class CoinCollect : MonoBehaviour, ICollectible
 {
     private GameManager gameManager;
     void Start()
@@ -14,13 +14,5 @@ public class CoinCollect : MonoBehaviour
     {
         gameManager.AddPoints(1);
         Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Collect();
-        }
     }
 }

@@ -487,32 +487,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1 &28603051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7442056213243838590, guid: 35cbdb2f4b2e9d2498e040b36016e6b0, type: 3}
-  m_PrefabInstance: {fileID: 5762346374251501305}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &28603054
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28603051}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 816c8c3779271e549871ea78ff15efd7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &60831785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4640066487261724577, guid: 8ff8f46ea52fe9c4381e4533743f491c, type: 3}
@@ -5941,10 +5915,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7442056213243838590, guid: 35cbdb2f4b2e9d2498e040b36016e6b0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 28603054}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35cbdb2f4b2e9d2498e040b36016e6b0, type: 3}
 --- !u!1001 &7955118508936070353
 PrefabInstance:

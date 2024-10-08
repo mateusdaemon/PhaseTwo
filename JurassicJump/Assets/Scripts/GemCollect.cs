@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemCollect : MonoBehaviour
+public class GemCollect : MonoBehaviour, ICollectible
 {
     private GameManager gameManager;
     void Start()
@@ -14,13 +14,5 @@ public class GemCollect : MonoBehaviour
     {
         gameManager.AddPoints(5);
         Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Collect();
-        }
     }
 }

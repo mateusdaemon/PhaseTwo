@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagePlayer : MonoBehaviour
+public class DamagePlayer : MonoBehaviour, IDamageable
 {
-    private IDamageable damageable;
+    GameManager gameManager;
 
     void Start()
     {
-        damageable = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage()
     {
-        if (collision.gameObject.CompareTag("Player") && damageable != null)
-        {
-            damageable.TakeDamage(1);
-        }
+        gameManager.TakeDamage(1);
     }
 }

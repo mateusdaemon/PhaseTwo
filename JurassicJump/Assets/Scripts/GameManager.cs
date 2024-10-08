@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour, IDamageable
+public class GameManager : MonoBehaviour
 {
     private static GameManager Instance;
     private HudManager hudManager;
@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour, IDamageable
 
     private bool isPlaying = false;
     private float playTime = 0;
+
+    private AdsManager adsManager;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class GameManager : MonoBehaviour, IDamageable
 
         playerUI.OnPlayBtn += HandlePlay;
         playerUI.OnReturnBtn += HandleReturn;
+
+        adsManager = GetComponent<AdsManager>();
 
         LoadLevel(SceneManager.GetActiveScene().name);
     }
@@ -56,6 +60,7 @@ public class GameManager : MonoBehaviour, IDamageable
     {
         if (levelName == "Menu")
         {
+            adsManager.ShowInterstitialAd();
             hudManager.SetMenu(Menu.Main);
             LoadScene("Menu");
         } else if (levelName == "Result")
